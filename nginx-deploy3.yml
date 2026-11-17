@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: satoru
+  namespace: infinte-void
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      name: gojo
+
+  template:
+    metadata:
+      labels:
+        name: gojo
+
+    spec:
+      containers:
+        - name: yuji
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

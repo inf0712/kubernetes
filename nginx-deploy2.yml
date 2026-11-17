@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: sukuna
+ namespace: manovalent-shrine
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      name: alpha
+
+  template:
+    metadata:
+      labels:
+        name: alpha
+
+    spec:
+      containers:
+       - name: megumi
+         image: nginx:alpine
+         ports:
+          - containerPort: 80
