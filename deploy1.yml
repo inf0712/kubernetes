@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: afsal-deploy
+ 
+spec:
+  replicas: 0
+ 
+  selector:
+    matchLabels:
+      name: alpha
+ 
+  template:
+    metadata:
+      labels:
+        name: alpha
+ 
+    spec:
+      containers:
+        - name: rtr
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
