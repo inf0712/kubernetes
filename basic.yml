@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itachi
+  namespace: uchiha
+
+
+spec:
+  replicas: 3
+  
+  selector:
+    matchLabels:
+      name: sharingan
+
+  template:
+    metadata:
+      labels:
+        name: sharingan
+
+    spec:
+      containers:
+        - name:  sasuke
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

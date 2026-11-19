@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akatsuki
+  namespace: uchiha
+
+spec:
+  replicas: 5
+
+  selector:
+    matchLabels: 
+      name: akatsuki
+
+  template:
+    metadata:
+      labels:
+        name: akatsuki
+
+    spec:
+      containers:
+        - name: pain
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+    
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+
+        limits:
+          cpu: "200m"
+          memory: "256Mi"

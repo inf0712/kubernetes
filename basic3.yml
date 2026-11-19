@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gojo
+  namespace: uchiha
+
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+
+  selector:
+    matchLabels:
+      name: limitless
+
+  template:
+    metadata:
+      labels:
+        name: limitless
+
+    spec:
+      containers:
+        - name: satoru
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+
