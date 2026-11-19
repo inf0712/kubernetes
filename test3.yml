@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shield
+
+
+spec:
+  replicas: 7
+  strategy:
+    type: RollingUpdate
+    rolingUpdate:
+       maxSurge: 2
+       maxUnavailable: 1
+
+  selector:
+    matchLabels:
+      name: version1
+
+
+  template:
+    metadata:
+      labels:
+        name: version1
+
+    spec:
+      containers:
+        - name: con1
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

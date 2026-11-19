@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
        - name: megumi
-         image: nginx:alpine
+         image: ubuntu/apache2
          ports:
           - containerPort: 80
