@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: satoru
-  namespace: infinite-void
+
 
 spec:
   replicas: 3
 
   selector:
     matchLabels:
-      name: gojo
+      app: web
 
   template:
     metadata:
       labels:
-        name: gojo
+        app: web
 
     spec:
       containers:
