@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: corporate-web-service
+
+spec:
+  type: ClusterIP
+  selector:
+      app: corporate-web
+  ports:
+    - port: 8090
+      targetPort: 80
