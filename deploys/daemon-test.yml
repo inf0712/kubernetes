@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: echo-deploy
+ 
+spec:
+  selector:
+    matchLabels:
+      name: alpha
+ 
+  template:
+    metadata:
+      labels:
+        name: alpha
+ 
+    spec:
+      containers:
+        - name: rtr
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+

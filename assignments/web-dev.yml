@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-dev
+  namespace: developments
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels: 
+      app: dev
+
+  template:
+    metadata:
+      labels:
+        app: dev
+
+    spec:
+      containers:
+        - name: dev-con
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+            
