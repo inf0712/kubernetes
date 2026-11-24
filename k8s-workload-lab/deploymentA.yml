@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-deploy
+  namespace: development
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: dev
+
+  template:
+    metadata:
+      labels:
+        app: dev
+
+    spec:
+      containers:
+        - name: dev-box
+          image: nginx:alpine
+          ports:
+          - containerPort: 80
