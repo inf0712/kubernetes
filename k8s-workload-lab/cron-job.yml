@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: system-report
+  namespace: development
+
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: dev
+        spec:
+          containers:
+            - name: job-con
+              image: busybox:1.36
+              command:
+                - echo "System health ok"
+
+          restartPolicy: OnFailure

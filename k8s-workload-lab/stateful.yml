@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web-stateful
+  namespace: development
+
+spec:
+  serviceName: stateful
+  replicas: 3
+  
+  selector:
+    matchLabels:
+      app: stateful-dev
+
+  template:
+    metadata:
+      labels:
+        app: stateful-dev 
+
+    spec:
+      containers:
+        - name: state-pod
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: storage
+              mountPath: /usr/share/nginx/html/data
+
+  volumeClaimTemplates:
+      - metadata:
+          name: storage
+
+        spec:
+          accessModes: 
+            - ReadWriteOnce
+
+          resources:
+            requests:
+              storage: 100Mi
+
